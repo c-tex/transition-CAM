@@ -195,14 +195,14 @@ def writefilefooter(fout, currpos):
 #    (3) saves the file after popping up an editor
 #
 #
-from StringIO import StringIO
+import io
 def export(objectslist, filename, argstring):
     print("postprocessing...")
     tooldefmotions = flattenandgroup(objectslist)
     if tooldefmotions:
         tooldefmotions[0][0]["filename"] = filename
 
-    fout = StringIO()
+    fout = io.StringIO()
     currpos = {}
     for i, (tooldef, motioncmds) in enumerate(tooldefmotions):
         writetooldefheader(fout, tooldef, i, currpos)
